@@ -78,12 +78,23 @@ if (! $ascending) {
   
 public function findById($id)
 {
-   $sql = $this->getSelectStatement() . ' WHERE ' .
-   $this->getPrimaryKeyName() . '=:id';
+   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=:id';
    $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
    return $statement->fetch();
 } 
 
-}
+public function findManyById($id)
+{
+   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=:id' . ' ORDER BY ' . $this->getOrderFields();
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
+   return $statement->fetchAll();
+} 
 
+public function findMessages($id)
+{
+   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=:id';
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
+   return $statement->fetchAll();
+} 
+}
 ?>

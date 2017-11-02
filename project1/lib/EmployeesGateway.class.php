@@ -5,8 +5,7 @@ parent::__construct($connect);
 }
 protected function getSelectStatement()
 {
-return "SELECT EmployeeID, FirstName, LastName, Address, City,
-Region, Country, Postal, Email FROM Employees ";
+return "SELECT EmployeeID, FirstName, LastName, Address, City, Region, Country, Postal, Email FROM Employees ";
 }
 protected function getOrderFields() {
 return 'LastName, FirstName';

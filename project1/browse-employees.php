@@ -1,15 +1,14 @@
 <?php
-define('DBHOST', '');
-define('DBNAME', 'book');
-define('DBUSER', 'testuser');
-define('DBPASS', 'mypassword');
-define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
 
+include 'includes/book-config.inc.php';
 
-function checkEmployeeQuery(){
-    
-    
-    if(is_numeric($_GET['employee']) && isset($_GET['employee']) && ($_GET['employee']<'99')) {
+function checkQuery(){
+  
+    if(!isset($_GET['employee'])){
+      $_GET['employee'] = 1;
+      $num = 1;
+    }
+    elseif(is_numeric($_GET['employee']) && isset($_GET['employee']) && ($_GET['employee']<'99')) {
         $num = $_GET['employee'];   
     }
     else{
@@ -19,111 +18,7 @@ function checkEmployeeQuery(){
     return $num;
 }
 
-function displayEmployees($querys){
-    try {
-                                $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
-                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $sql = "select * from Employees order by LastName";
-                                $result = $pdo->query($sql);
-                                
-                            while ($row = $result->fetch()) {
-                            echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?employee=' . $row['EmployeeID'] . '" class="';
-                            
-                                echo 'item">';
-                                echo "<li>" . $row['FirstName'] . " " . $row['LastName'] . '</a>' . "</li>";
-                            }
-                            
-                            $pdo = null;
-                                }
-                            catch (PDOException $e) {
-                                die( $e->getMessage() );
-                                }
-    
-};
-
-function displayEmpInfo($querye){
-                                
-                                try {
-                                
-                                    $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
-                                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    $sql = 'select * from Employees where EmployeeId=' . $querye;
-                                    $result = $pdo->query($sql);
-                                
-                                
-                                while ($row = $result->fetch()) {
-                                    echo "<h4>" . $row['FirstName'] . " " . $row['LastName'] . "</h4>";
-                                    echo $row['Address'] . "<br/>";
-                                    echo $row['City'] . ", " . $row['Region'] . "<br/>";
-                                    echo $row['Country'] . ", " . $row['Postal'] . "<br/>";
-                                    echo $row['Email'];
-                                    }
-                                    $pdo = null;
-                                    }
-                                    
-                                catch (PDOException $e) {
-                                    die( $e->getMessage() );
-                                }
-                                
-};
-
-function displayToDo($querye){
-    
-    
-                                    try {
-                                        
-                                            $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
-                                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                            $sql = 'SELECT * FROM EmployeeToDo INNER JOIN Employees ON Employees.EmployeeID = EmployeeToDo.EmployeeID WHERE Employees.EmployeeID=' . $querye . " Order by EmployeeToDo.DateBy DESC";
-                                            $result = $pdo->query($sql);
-                                            while ($row = $result->fetch()) {
-                                             
-                                        echo "<tr>";
-                                        echo "<td>" . $row['DateBy'] . "</td>";
-                                        echo "<td>" . $row['Status'] . "</td>";
-                                        echo "<td>" . $row['Priority'] . "</td>";
-                                        echo "<td>" . "<div align='left'>" . $row['Description'] . "</div>" . "</td>";
-                                        echo "</tr>";
-                                    
-                                            }
-                                            $pdo = null;
-                                        }
-                                    
-                                    catch (PDOException $e) {
-                                        die($e->getMessage());
-                                    }
-};
-
-function displayMessage($querye){
-    
-    
-                                    try {
-                                        
-                                            $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
-                                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                            
-                                            $sql = 'SELECT E.FirstName, E.LastName, E2.LastName, M.Content, E2.FirstName, M.MessageDate, M.Category FROM Employees AS E, Employees AS E2, EmployeeMessages AS M WHERE M.EmployeeID = E.EmployeeID AND M.ContactID = E2.EmployeeID AND E.EmployeeID =' . $querye;
-                                            
-                                            $result = $pdo->query($sql);
-                                            while ($row = $result->fetch()) {
-                                             
-                                        echo "<tr>";
-                                        echo "<td>" . $row['MessageDate'] . "</td>";
-                                        echo "<td>" . $row['Category'] . "</td>";
-                                        echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
-                                        echo "<td>" . "<div align='left'>" . substr($row['Content'], 0, 40) . "..." . "</div>" . "</td>";
-                                        echo "</tr>";
-                                    
-                                            }
-                                            $pdo = null;
-                                        }
-                                    
-                                    catch (PDOException $e) {
-                                        die($e->getMessage());
-                                    }
-};
-
-?>
+?>    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -170,9 +65,19 @@ function displayMessage($querye){
                          <?php 
                            /* programmatically loop though employees and display each
                               name as <li> element. */
-                           //checkEmployeeInput();   
-                           $c = checkEmployeeQuery();
-                           displayEmployees($c);
+                                
+                                try{
+                                $srt = null;
+                                $db = new EmployeesGateway($connection );
+                                $result = $db->findAllSorted($srt);
+                                foreach ($result as $row){
+                                echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?employee=' . $row['EmployeeID'] . '" class="';
+                                echo 'item">';
+                                echo "<li>" . $row['FirstName'] . " " . $row['LastName'] . '</a>' . "</li>";
+                                }}
+                                catch (Exception $e) {
+                                die( $e->getMessage() );
+                                }
                            
                          ?>            
 
@@ -200,9 +105,17 @@ function displayMessage($querye){
                               
                            <?php   
                              /* display requested employee's information */
-                             $d = checkEmployeeQuery();
-                             displayEmpInfo($d);
-                             
+                                $theID = checkQuery();                             
+                              
+                                $db = new EmployeesGateway($connection );
+                                $result = $db->findById($theID);
+                              
+                                    echo "<h4>" . $result['FirstName'] . " " . $result['LastName'] . "</h4>";
+                                    echo $result['Address'] . "<br/>";
+                                    echo $result['City'] . ", " . $result['Region'] . "<br/>";
+                                    echo $result['Country'] . ", " . $result['Postal'] . "<br/>";
+                                    echo $result['Email'];
+                                
                            ?>
                            
          
@@ -223,8 +136,18 @@ function displayMessage($querye){
                                   <tbody>
                                     <?php /*  display TODOs  */
                                     
-                                    $e = checkEmployeeQuery();
-                                    displayToDo($e);
+                                  $theID = checkQuery(); 
+                                  $db = new EmployeesToDoGateway($connection );
+                                  $result = $db->findManyById($theID);
+                                        
+                                        foreach ($result as $row){
+                                        echo "<tr>";
+                                        echo "<td>" . $row['DateBy'] . "</td>";
+                                        echo "<td>" . $row['Status'] . "</td>";
+                                        echo "<td>" . $row['Priority'] . "</td>";
+                                        echo "<td>" . "<div align='left'>" . $row['Description'] . "</div>" . "</td>";
+                                        echo "</tr>";
+                                        }
                                     
                                     ?>
                                   </tbody>
@@ -247,10 +170,20 @@ function displayMessage($querye){
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <?php /*  display TODOs  */
+                                    <?php /*  display Messages  */
                                     
-                                    $f = checkEmployeeQuery();
-                                    displayMessage($f);
+                                    $theID = checkQuery(); 
+                                    $db = new EmployeesMessagesGateway($connection );
+                                    $result = $db->findMessages($theID);
+                                        
+                                        foreach ($result as $row){
+                                        echo "<tr>";
+                                        echo "<td>" . $row['MessageDate'] . "</td>";
+                                        echo "<td>" . $row['Category'] . "</td>";
+                                        echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
+                                        echo "<td>" . "<div align='left'>" . substr($row['Content'], 0, 40) . "..." . "</div>" . "</td>";
+                                        echo "</tr>";
+                                        }
                                     
                                     ?>
                                   </tbody>
@@ -271,4 +204,4 @@ function displayMessage($querye){
 </div>    <!-- / mdl-layout --> 
           
 </body>
-</html>
+</html>   

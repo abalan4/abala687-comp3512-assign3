@@ -1,33 +1,24 @@
-
-    
 <?php
 
 include 'includes/book-config.inc.php';
 
-?>    
-
-
-<?php
+function checkQuery(){
+  
+    if(!isset($_GET['employee'])){
+      $_GET['employee'] = 1;
+      $num = 1;
+    }
+    elseif(is_numeric($_GET['employee']) && isset($_GET['employee']) && ($_GET['employee']<'99')) {
+        $num = $_GET['employee'];   
+    }
+    else{
+        $num = 1;
+    }
     
-                            /*while ($row = $result->fetch()) {
-                            echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?employee=' . $row['EmployeeID'] . '" class="';
-                            
-                                echo 'item">';
-                                echo "<li>" . $row['FirstName'] . " " . $row['LastName'] . '</a>' . "</li>";
-                            }*/
-                            
-                               
-                               /* $db = new EmployeesGateway($connection );
-                                $result = $db->findAll();
-                                foreach ($result as $row){
-                                echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?employee=' . $row['EmployeeID'] . '" class="';
-                                echo 'item">';
-                                echo "<li>" . $row['FirstName'] . " " . $row['LastName'] . '</a>' . "</li>";
-                                }*/
-                                    
+    return $num;
+}
 
-
-?>
+?>    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,13 +65,18 @@ include 'includes/book-config.inc.php';
                          <?php 
                            /* programmatically loop though employees and display each
                               name as <li> element. */
-                           
+                                
+                                try{
+                                $srt = null;
                                 $db = new EmployeesGateway($connection );
-                                $result = $db->findAll();
+                                $result = $db->findAllSorted($srt);
                                 foreach ($result as $row){
                                 echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?employee=' . $row['EmployeeID'] . '" class="';
                                 echo 'item">';
                                 echo "<li>" . $row['FirstName'] . " " . $row['LastName'] . '</a>' . "</li>";
+                                }}
+                                catch (Exception $e) {
+                                die( $e->getMessage() );
                                 }
                            
                          ?>            
@@ -109,9 +105,17 @@ include 'includes/book-config.inc.php';
                               
                            <?php   
                              /* display requested employee's information */
-                             //$d = checkEmployeeQuery();
-                             //displayEmpInfo($d);
-                             
+                                $theID = checkQuery();                             
+                              
+                                $db = new EmployeesGateway($connection );
+                                $result = $db->findById($theID);
+                              
+                                    echo "<h4>" . $result['FirstName'] . " " . $result['LastName'] . "</h4>";
+                                    echo $result['Address'] . "<br/>";
+                                    echo $result['City'] . ", " . $result['Region'] . "<br/>";
+                                    echo $result['Country'] . ", " . $result['Postal'] . "<br/>";
+                                    echo $result['Email'];
+                                
                            ?>
                            
          
@@ -132,8 +136,18 @@ include 'includes/book-config.inc.php';
                                   <tbody>
                                     <?php /*  display TODOs  */
                                     
-                                    //$e = checkEmployeeQuery();
-                                    //displayToDo($e);
+                                  $theID = checkQuery(); 
+                                  $db = new EmployeesToDoGateway($connection );
+                                  $result = $db->findManyById($theID);
+                                        
+                                        foreach ($result as $row){
+                                        echo "<tr>";
+                                        echo "<td>" . $row['DateBy'] . "</td>";
+                                        echo "<td>" . $row['Status'] . "</td>";
+                                        echo "<td>" . $row['Priority'] . "</td>";
+                                        echo "<td>" . "<div align='left'>" . $row['Description'] . "</div>" . "</td>";
+                                        echo "</tr>";
+                                        }
                                     
                                     ?>
                                   </tbody>
@@ -156,10 +170,20 @@ include 'includes/book-config.inc.php';
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <?php /*  display TODOs  */
+                                    <?php /*  display Messages  */
                                     
-                                    //$f = checkEmployeeQuery();
-                                    //displayMessage($f);
+                                    $theID = checkQuery(); 
+                                    $db = new EmployeesMessagesGateway($connection );
+                                    $result = $db->findMessages($theID);
+                                        
+                                        foreach ($result as $row){
+                                        echo "<tr>";
+                                        echo "<td>" . $row['MessageDate'] . "</td>";
+                                        echo "<td>" . $row['Category'] . "</td>";
+                                        echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
+                                        echo "<td>" . "<div align='left'>" . substr($row['Content'], 0, 40) . "..." . "</div>" . "</td>";
+                                        echo "</tr>";
+                                        }
                                     
                                     ?>
                                   </tbody>
