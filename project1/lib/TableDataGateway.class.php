@@ -95,6 +95,14 @@ public function findMessages($id)
    $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=:id';
    $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
    return $statement->fetchAll();
-} 
+}
+
+public function findSubsById($id)
+{
+   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=:id' . $this->getSecondaryKeyName() . '=:id' . $this->getThirdKeyName() . ' ORDER BY ' . $this->getOrderFields();
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
+   return $statement->fetchAll();
+}
+
 }
 ?>
