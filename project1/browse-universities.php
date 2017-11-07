@@ -36,23 +36,30 @@ function displayUniversities(){
         
         if ($_GET['state'] == "reset"){
           $uniState = $_GET['state'];
-                                $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
-                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $sql = "select * from Universities order by Name limit 20";
+          
+                            $srt = null;
+                            $db = new UniversityGateway($connection);
+                            $result = $db->findAllSorted($srt);
+                            foreach ($result as $row){
+                                 echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?employee=' . $row['EmployeeID'] . '" class="';
+        }
+                            //     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
+                            //     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            //     $sql = "select * from Universities order by Name limit 20";
                             
-                                $result = $pdo->query($sql);
+                            //     $result = $pdo->query($sql);
                                 
-                            while ($row = $result->fetch()) {
-                            echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?university=' . $row['UniversityID'] . "&state=" . $row['State'] . '" class="';
+                            // while ($row = $result->fetch()) {
+                            // echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?university=' . $row['UniversityID'] . "&state=" . $row['State'] . '" class="';
                             
-                                echo 'item">';
-                                echo "<li>" . $row['Name'] . '</a>' . "</li>";
+                            //     echo 'item">';
+                            //     echo "<li>" . $row['Name'] . '</a>' . "</li>";
                                 
                                 
                                 
-                            }
-                            $pdo = null;
-                                }
+                            // }
+                            // $pdo = null;
+                            //     }
         
         
         else{

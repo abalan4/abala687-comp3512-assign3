@@ -77,7 +77,9 @@ function checkQuery(){
                                 echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?subcategory=" . "reset" ."'>" . "Reset Filter" . "</a>" . "<br><br>" . "&nbsp ";
                                 foreach ($result as $row){
                                 echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?subcategory=" . $row['SubcategoryID'] ."'>" . $row['SubcategoryName'] . "</a>" . "&nbsp ";
-                                }}
+                                    }
+                                    
+                                }
                                 catch (Exception $e) {
                                 die( $e->getMessage() );
                                 }
