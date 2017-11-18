@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
 function checkQuery(){
@@ -27,7 +30,7 @@ function checkQuery(){
 <html lang="en">
 
 <head>
-    <title>CRM Admin</title>
+    <title>Books</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>

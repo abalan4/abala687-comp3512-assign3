@@ -1,9 +1,8 @@
 <?php
-define('DBHOST', '');
-define('DBNAME', 'book');
-define('DBUSER', 'testuser');
-define('DBPASS', 'mypassword');
-define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
+session_start();
+
+include 'checkloginstatus.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -43,14 +42,15 @@ define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
 
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
   <div class="mdl-tabs__tab-bar">
-      <a href="#alex-panel" class="mdl-tabs__tab is-active">Alex Balan</a>
+      <a href="#alex-panel" class="mdl-tabs__tab is-active">Asssignment 2 group</a>
       <a href="#course-panel" class="mdl-tabs__tab">Course</a>
       <a href="#resources-panel" class="mdl-tabs__tab">Resources Used</a>
   </div>
 
   <div class="mdl-tabs__panel is-active" id="alex-panel">
     <ul>
-      <li>Student ID: 201521687</li>
+      <li>Alex Balan: Student ID: 201521687</li>
+      <li>Kevin Lewis: Student ID: 201526932 </li>
     </ul>
   </div>
   <div class="mdl-tabs__panel" id="course-panel">
@@ -64,6 +64,7 @@ define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
     <ul>
       <li><a href="https://getmdl.io/">MDL</a></li>
       <li>Images from Assignment 1 zip</li>
+      <li><a href="https://github.com/abalan4/abala687-comp3512-assign2">Assignment 2 GitHub</a></li>
     </ul>
   </div>
 

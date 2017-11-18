@@ -5,7 +5,7 @@ parent::__construct($connect);
 }
 protected function getSelectStatement()
 {
-return "SELECT Name 
+return "SELECT Name, Universities.UniversityID 
         FROM (((Books 
         INNER JOIN AdoptionBooks ON Books.BookID = AdoptionBooks.BookID)
         INNER JOIN Adoptions ON Adoptions.AdoptionID = AdoptionBooks.AdoptionID)

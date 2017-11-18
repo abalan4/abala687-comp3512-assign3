@@ -83,6 +83,13 @@ public function findById($id)
    return $statement->fetch();
 } 
 
+public function findBySid($id)
+{
+   $sql = $this->getSelectStatement() . ' WHERE ' . $this->getSecondaryKeyName() . '=:id';
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
+   return $statement->fetchAll();
+} 
+
 public function findManyById($id)
 {
    $sql = $this->getSelectStatement() . ' WHERE ' . $this->getPrimaryKeyName() . '=:id' . ' ORDER BY ' . $this->getOrderFields();

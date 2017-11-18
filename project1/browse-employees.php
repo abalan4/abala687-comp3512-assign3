@@ -1,5 +1,7 @@
 <?php
+session_start();
 
+include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
 function checkQuery(){
@@ -24,7 +26,7 @@ function checkQuery(){
 <html lang="en">
 
 <head>
-    <title>CRM Admin</title>
+    <title>Employees</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -38,7 +40,8 @@ function checkQuery(){
     <script   src="https://code.jquery.com/jquery-1.7.2.min.js" ></script>
        
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    
+
+}
 </head>
 
 <body>
@@ -54,8 +57,8 @@ function checkQuery(){
 
             <div class="mdl-grid">
 
-              <!-- mdl-cell + mdl-card -->
-              <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+              
+              <div class="mdl-cell mdl-cell--1-col card-lesson mdl-card  mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-color--orange">
                   <h2 class="mdl-card__title-text">Employees</h2>
                 </div>
@@ -69,7 +72,9 @@ function checkQuery(){
                                 try{
                                 $srt = null;
                                 $db = new EmployeesGateway($connection );
-                                $result = $db->findAllSorted($srt);
+                       
+
+                                $result = $db-> displayEmployees();
                                 foreach ($result as $row){
                                 echo '<a href="' . $_SERVER["SCRIPT_NAME"] . '?employee=' . $row['EmployeeID'] . '" class="';
                                 echo 'item">';
@@ -85,10 +90,9 @@ function checkQuery(){
                 </div>
               </div>  <!-- / mdl-cell + mdl-card -->
               
-              
-              
+  
               <!-- mdl-cell + mdl-card -->
-              <div class="mdl-cell mdl-cell--9-col card-lesson mdl-card  mdl-shadow--2dp">
+              <div class="mdl-cell mdl-cell--7-col card-lesson mdl-card  mdl-shadow--2dp">
 
                     <div class="mdl-card__title mdl-color--deep-purple mdl-color-text--white">
                       <h2 class="mdl-card__title-text">Employee Details</h2>
@@ -115,14 +119,11 @@ function checkQuery(){
                                     echo $result['City'] . ", " . $result['Region'] . "<br/>";
                                     echo $result['Country'] . ", " . $result['Postal'] . "<br/>";
                                     echo $result['Email'];
-                                
                            ?>
-                           
          
                           </div>
+                          
                           <div class="mdl-tabs__panel" id="todo-panel">
-                              
-                                                           
                             
                                 <table class="mdl-data-table  mdl-shadow--2dp">
                                   <thead>
@@ -135,10 +136,10 @@ function checkQuery(){
                                   </thead>
                                   <tbody>
                                     <?php /*  display TODOs  */
-                                    
-                                  $theID = checkQuery(); 
-                                  $db = new EmployeesToDoGateway($connection );
-                                  $result = $db->findManyById($theID);
+                                          
+                                        $theID = checkQuery(); 
+                                        $db = new EmployeesToDoGateway($connection );
+                                        $result = $db->findManyById($theID);
                                         
                                         foreach ($result as $row){
                                         echo "<tr>";
@@ -157,8 +158,6 @@ function checkQuery(){
                           </div>
                           
                           <div class="mdl-tabs__panel" id="messages-panel">
-                              
-                                                         
                             
                                 <table class="mdl-data-table  mdl-shadow--2dp">
                                   <thead>
@@ -192,12 +191,58 @@ function checkQuery(){
          
                           </div>
                         </div>                         
-                    </div>    
-  
-                 
+                    </div>
+                    
+              
               </div>  <!-- / mdl-cell + mdl-card -->   
+              
+              <div class="mdl-cell mdl-cell--2-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-color--orange">
+                  <h2 class="mdl-card__title-text"><button onclick="hide()">Filter</h2></button>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    
+                    <div id="content">
+                    <br><form action="/project1/browse-employees.php" type="get">
+                      Last Name: <input type="text" name="lnameFilter"><br>
+                      <select name="cityFilter">
+                          <option value="" selected="selected">- no selection -</option>
+                         <?php 
+
+                                try{
+                                $db = new EmployeesGateway($connection );
+                                $result = $db->findAllEmployeeCities();
+                                foreach ($result as $row){
+                                echo '<option value= "' . $row['City'] . '">'. $row['City'].' </option>';  
+                                }
+                                }catch (Exception $e) {
+                                   die( $e->getMessage() );
+                                }
+                           
+                         ?>   
+                        </select>
+                    <input type="submit" value="Submit"></div>
+                    </form>
+                    
+                        <script>
+                            function hide() {
+                                var x = document.getElementById("content");
+                                if (x.style.display === "none") {
+                                    x.style.display = "block";
+                                } else {
+                                    x.style.display = "none";
+                                }
+                            }
+;
+                        </script>
+                    
+              </div>
+            </div>
+              
             
             </div>  <!-- / mdl-grid -->    
+            
+            
 
         </section>
     </main>    

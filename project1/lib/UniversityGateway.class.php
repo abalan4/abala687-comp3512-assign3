@@ -5,12 +5,15 @@ parent::__construct($connect);
 }
 protected function getSelectStatement()
 {
-return "SELECT * from Universities order by Name limit 20";
+return "SELECT Name, Address, City, Website, Longitude, Latitude, UniversityID, Zip, State from Universities";
 }
 protected function getOrderFields() {
-return 'Namee';
+return 'Name limit 20 ';
 }
 protected function getPrimaryKeyName() {
+return "State";
+}
+protected function getSecondaryKeyName() {
 return "UniversityID";
 }
 }

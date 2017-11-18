@@ -1,11 +1,11 @@
 <?php
+session_start();
 
+include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
 /*This function checks the querystring parameters to make sure the input is valid*/
 function checkISBN(){
-    
-    
     
     if(isset($_GET['ISBN10']) && is_numeric($_GET['ISBN10']) && ($_GET['ISBN10']<'0321906366')) {
         $num = $_GET['ISBN10'];
@@ -21,7 +21,6 @@ function checkISBN(){
     
     return $num;
 }
-
 
 ?>
 
@@ -47,6 +46,10 @@ function checkISBN(){
 </head>
 
 <body>
+
+<script type="text/javascript" language="javascript" src="js/imageBox.js">
+    
+</script>
     
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
@@ -79,17 +82,32 @@ function checkISBN(){
                                 $result = $db->findMessages($c);
                                 
                                 foreach($result as $row) {
-                                      echo "<div class=\"mdl-card mdl-shadow--2dp demo2-card-square\">\n";
+                                      
+                                      echo "<div class=\"mdl-card2 mdl-shadow--2dp demo2-card-square\">\n";
                                       echo "<div class=\"mdl-card__title mdl-card--expand\">\n";
                                       echo ' <h2 class="' . "mdl-card__title-text" . '"' . ">" .   $row['Title']  . "</h2>";
                                       echo "</div>\n";
                                       echo "<div class=\"mdl-card__supporting-text\">\n";
-                                      echo '<img src="/project1/book-images/medium/' . $row['ISBN10'] . '.jpg"' . ">" . "<br>";
+                                      echo '<img id=' . '"myImg"'. ' src="/project1/book-images/medium/' . $row['ISBN10'] . '.jpg"' . ">" . "<br>";
+                                      
+                                      echo '<div id="myModal" class="modal">';
+
+                                          //Close Button
+                                      echo '<span class="close">&times;</span>';
+                                        
+                                          //Image
+                                      echo '<img class="modal-content" id="img01">';
+                                        
+                                          //Image Text
+                                      echo '<div id="caption"></div>';
+                                      echo '</div>';
+                                      echo '<script src="js/imageBox.js"></script>';
+                                      
                                       echo "ISBN10: " . $row['ISBN10'] . "<br>";
                                       echo "ISBN13: " . $row['ISBN13'] . "<br>";
                                       echo "Year: " . $row['CopyrightYear'] . "<br>";
-                                      echo "Subcategory: " . $row['SubcategoryName'] . "<br>";
-                                      echo "Imprint: " . $row['Imprint'] . "<br>";
+                                      echo "Subcategory: " . "<a href=" . '"' . "browse-books.php?subcategory=" . $row['SubcategoryID'] . '">' . $row['SubcategoryName'] . "</a>" . "<br>";
+                                      echo "Imprint: " . "<a href=" . '"' . "browse-books.php?imprint=" . $row['ImprintID'] . '">' . $row['Imprint'] . "</a>" . "<br>";
                                       echo "Status: " . $row['Status'] . "<br>";
                                       echo "Imprint: " . $row['Imprint'] . "<br>";
                                       echo "Binding: " . $row['BindingType'] . "<br>";
@@ -103,14 +121,15 @@ function checkISBN(){
                                 $db = new UniversityBookGateway($connection );
                                 $result = $db->findMessages($c);
                                 
-                                     echo "<div class=\"mdl-card mdl-shadow--2dp demo2-card-square\">\n";
+                                     echo "<div class=\"mdl-card2 mdl-shadow--2dp demo2-card-square\">\n";
                                      echo "<div class=\"mdl-card__title mdl-card--expand\">\n";
                                      echo '<h2 class="' . "mdl-card__title-text" . '"' . ">" . "Univerisites that have adopted this book: " . "</h2>";
                                      echo "</div>\n";
                                      echo "<div class=\"mdl-card__supporting-text\">\n";
                                                     
                                 foreach($result as $row) {
-                                     echo $row['Name'] . "<br>";
+                                     echo "<a href=" . '"' . "browse-universities.php?university=" . $row['UniversityID'] . '&state=' . '">' . $row['Name'] . "</a>" . "<br>";
+                                     
                                 }
                                     echo "</div>\n";
                                     echo "</div>";
@@ -118,7 +137,7 @@ function checkISBN(){
                                 $db = new BookAuthorGateway($connection );
                                 $result = $db->findManyByID($c);
                                 
-                                    echo "<div class=\"mdl-card mdl-shadow--2dp demo-card-square\">\n";
+                                    echo "<div class=\"mdl-card2 mdl-shadow--2dp demo3-card-square\">\n";
                                     echo "<div class=\"mdl-card__title mdl-card--expand\">\n";
                                     echo '<h2 class="' . "mdl-card__title-text" . '"' . ">" . "Authors:" . "</h2>";
                                     echo "</div>\n";
