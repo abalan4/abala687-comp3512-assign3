@@ -9,7 +9,7 @@ include 'checkloginstatus.php';
 <html lang="en">
 
 <head>
-    <title>Chapter 14</title>
+    <title>About Us</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
