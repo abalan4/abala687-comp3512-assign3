@@ -12,7 +12,7 @@
     <nav class="mdl-navigation mdl-color-text--blue-grey-300">
         <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="/project1/index.php"><i class="material-icons" role="presentation">dashboard</i> Dashboard</a>
         <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="/project1/profile.php"><i class="material-icons" role="presentation">person</i></i> User Profile</a>  
-        <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="/project1/browse-employees.php?employee=1"><i class="material-icons" role="presentation">message</i> Employees</a>
+        <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="/project1/browse-employees.php?"><i class="material-icons" role="presentation">message</i> Employees</a>
         <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="/project1/browse-books.php?subcategory=reset"><i class="material-icons" role="presentation">event</i> Books</a>
         <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="/project1/browse-universities.php?state=reset"><i class="material-icons" role="presentation">call</i> Universities</a>
         <a class="mdl-navigation__link mdl-color-text--blue-grey-300" href="/project1/analytics.php"><i class="material-icons" role="presentation">settings</i> Analytics</a>

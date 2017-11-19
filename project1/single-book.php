@@ -28,7 +28,7 @@ function checkISBN(){
 <html lang="en">
 
 <head>
-    <title>CRM Admin</title>
+    <title>Single Book</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -112,7 +112,7 @@ function checkISBN(){
                                       echo "Imprint: " . $row['Imprint'] . "<br>";
                                       echo "Binding: " . $row['BindingType'] . "<br>";
                                       echo "Trim Size: " . $row['TrimSize'] . "<br>";
-                                      echo "Page count: " . $row['PageCountsEditorialEst'] . "<br>" . "<br>";
+                                      echo "Page Count: " . $row['PageCountsEditorialEst'] . "<br>" . "<br>";
                                       echo "Description: " . $row['Description'] . "<br>";
                                       echo "</div>\n";
                                       echo "</div>";

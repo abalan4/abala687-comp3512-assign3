@@ -239,11 +239,8 @@ function checkQuery(){
               </div>
             </div>
               
-            
             </div>  <!-- / mdl-grid -->    
             
-            
-
         </section>
     </main>    
 </div>    <!-- / mdl-layout --> 

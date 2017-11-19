@@ -49,6 +49,7 @@ include 'checkloginstatus.php';
 
   <div class="mdl-tabs__panel is-active" id="alex-panel">
     <ul>
+      <th>Assignment 2 created for COMP 3512 WEB II</th>
       <li>Alex Balan: Student ID: 201521687</li>
       <li>Kevin Lewis: Student ID: 201526932 </li>
     </ul>

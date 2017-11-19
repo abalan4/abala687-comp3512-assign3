@@ -38,6 +38,9 @@
       
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
+          
+<a href="logout.php"><label id="tt4" class="material-icons mdl-badge mdl-badge--overlap">https</label></a> 
+<div class="mdl-tooltip" for="tt4">logout</div>           
                   
 <label id="tt2" class="material-icons mdl-badge mdl-badge--overlap" data-badge="5">account_box</label>  
 <div class="mdl-tooltip" for="tt2">Messages</div>                     
@@ -46,6 +49,7 @@
  <div class="mdl-tooltip" for="tt3">Notifications</div>           
                   
         <img src="/project1/images/search.png" onclick="myFunction()">
+             
              
              <div id=searchBox>
                 <input type="text" method="put" id="search" placeholder="Search" value="">

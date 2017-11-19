@@ -42,15 +42,15 @@ include 'checkloginstatus.php';
 
               <!-- mdl-cell + mdl-card -->
                             
-                            <div class="mdl-card mdl-shadow--2dp demo-card-square">
-                                <div class="mdl-card__title mdl-card--expand">
-                                  <h2 class="mdl-card__title-text">Analytics</h2>
-                                </div>
-                                <div class="mdl-card__supporting-text">
-                                  Under Construction
-                                </div>
+                <div class="mdl-card mdl-shadow--2dp demo-card-square">
+                <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">Analytics</h2>
+              </div>
+                <div class="mdl-card__supporting-text">
+                    Under Construction
+              </div>
 
-                    </div>
+            </div>
             
         </section>
     </main>    

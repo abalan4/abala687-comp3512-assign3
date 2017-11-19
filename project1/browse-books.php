@@ -61,7 +61,7 @@ function checkQuery(){
             <div class="mdl-grid">
 
               <!-- mdl-cell + mdl-card -->
-              <div class="mdl-cell mdl-cell--7-col card-lesson mdl-card  mdl-shadow--2dp">
+              <div class="mdl-cell mdl-cell--6-col card-lesson mdl-card  mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-color--orange">
                   <h2 class="mdl-card__title-text">Subcategory</h2>
                 </div>
@@ -69,25 +69,25 @@ function checkQuery(){
                     <ul class="demo-list-item mdl-list">
                     <div class="four wide field">
                         
-                                <?php
-                                checkQuery();
+                        <?php
+                        checkQuery();
                                 
-                                try{
-                                $srt = 1;
-                                $db = new SubcategoriesGateway($connection );
-                                $result = $db->findAllSorted($srt);
-                                echo "Filter by: " . "<br>";
-                                echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?subcategory=" . "reset" ."'>" . "Reset Filter" . "</a>" . "<br><br>" . "&nbsp ";
-                                foreach ($result as $row){
-                                echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?subcategory=" . $row['SubcategoryID'] ."'>" . $row['SubcategoryName'] . "</a>" . "&nbsp ";
-                                    }
+                        try{
+                        $srt = 1;
+                        $db = new SubcategoriesGateway($connection );
+                        $result = $db->findAllSorted($srt);
+                        echo "Filter by: " . "<br>";
+                        echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?subcategory=" . "reset" ."'>" . "Reset Filter" . "</a>" . "<br><br>";
+                        foreach ($result as $row){
+                        echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?subcategory=" . $row['SubcategoryID'] ."'>" . $row['SubcategoryName'] . "</a>" . " | ";
+                        }
                                     
-                                }
-                                catch (Exception $e) {
-                                die( $e->getMessage() );
-                                }
+                        }
+                        catch (Exception $e) {
+                        die( $e->getMessage() );
+                        }
                                 
-                                ?>
+                        ?>
                     </div>  
                      </ul>
                 </div>
@@ -106,9 +106,9 @@ function checkQuery(){
                                 $db = new ImprintGateway($connection );
                                 $result = $db->findAllSorted($srt);
                                 echo "Filter by: " . "<br>";
-                                echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?imprint=" . "reset" ."'>" . "Reset Filter" . "</a>" . "<br><br>" . "&nbsp ";
+                                echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?imprint=" . "reset" ."'>" . "Reset Filter" . "</a>" . "<br><br>";
                                 foreach ($result as $row){
-                                echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?imprint=" . $row['ImprintID'] ."'>" . $row['Imprint'] . "</a>" . " ";
+                                echo "<a href='" . $_SERVER["SCRIPT_NAME"] . "?imprint=" . $row['ImprintID'] ."'>" . $row['Imprint'] . "</a>" . " | ";
                                 }}
                                 catch (Exception $e) {
                                 die( $e->getMessage() );
