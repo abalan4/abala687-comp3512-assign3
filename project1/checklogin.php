@@ -84,14 +84,6 @@ function getUserLogin(){
 
 getUserLogin();
 
-//echo $_SESSION["myusername"] . "<br>";
-//echo $_SESSION["myFirst"];
-//echo $_SESSION["myLast"];
-//echo $_SESSION["myEmail"];
-
-//$_SESSION["myuser"] = $_POST["username"];
-//$_SESSION["mypass"] = $_POST["userpass"];
-
 header("Location:/project1/login.php");
 
 ?>
