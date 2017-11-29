@@ -165,12 +165,32 @@ function checkUniversity(){
                                     echo $row['City'] . ", ";
                                     echo $row['State'] . " " . $row['Zip'] . "<br/>";
                                     echo $row['Website']. "<br/>";
-                                    echo $row['Longitude'] . " ";
-                                    echo $row['Latitude'];
+                                    $lat = $row['Latitude'];
+                                    $long = $row['Longitude'];
                                 }
                              }
-                           ?>
-                           
+                             
+                             ?>
+                            
+                            <div id="map"></div>
+                            <script>
+                              function initMap() {
+                                var uluru = {lat: <?php echo $lat; ?>, lng: <?php echo $long; ?>};
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                  zoom: 15,
+                                  center: uluru
+                                });
+                                var marker = new google.maps.Marker({
+                                  position: uluru,
+                                  map: map
+                                });
+                             }
+                            </script>
+                                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtNCYR6r5zF3FLEjNsaLjKyc8vqxbnONg&callback=initMap">
+                            </script>
+                             
+                             
+                             
          
                           </div>
                           <div class="mdl-tabs__panel" id="todo-panel">

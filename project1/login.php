@@ -67,6 +67,11 @@ checkLoginStatus();
 				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect type="submit">Log in</button>
 			        </div>
 				</form>
+				    <form action="register.php" method="post">
+				    <div class="mdl-card__actions mdl-card--border">
+			            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect type="submit2">Register</button>
+			         </div>
+			     </form>
 			</div>
 			
 			<?php
