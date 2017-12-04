@@ -111,5 +111,12 @@ public function findSubsById($id)
    return $statement->fetchAll();
 }
 
+public function findCountries()
+{
+   $sql = $this->getSelectStatement();
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+   return $statement->fetchAll();
+}
+
 }
 ?>
