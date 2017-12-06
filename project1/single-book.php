@@ -51,10 +51,6 @@ function checkISBN(){
 
 <body>
 
-<script type="text/javascript" language="javascript" src="js/imageBox.js">
-    
-</script>
-    
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
             

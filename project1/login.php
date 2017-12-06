@@ -40,6 +40,7 @@ checkLoginStatus();
     <script   src="https://code.jquery.com/jquery-1.7.2.min.js" ></script>
        
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="js/validateLogin.js"></script>
     
 </head>
 
@@ -48,6 +49,7 @@ checkLoginStatus();
 <div class=.mdl-layout__containerlogin>    
 <div class="mdl-layoutlogin mdl-js-layout mdl-color--grey-100">
 	<main class="mdl-layout__contentlogin">
+		
 		<div class="mdl-card mdl-shadow--6dp">
 			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
 				<h2 class="mdl-card__title-text">CRM Admin</h2>
@@ -55,13 +57,14 @@ checkLoginStatus();
 	  	<div class="mdl-card__supporting-text">
 				<form action="checklogin.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="text" name="username" />
-						<label class="mdl-textfield__label" for="username">Username</label>
+						<div>Username: </div>
+						<input required name="username" type="username" class="form-control inputpass" id="username" onkeyup="checkInput(); return false;" />
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="password" name="userpass" />
-						<label class="mdl-textfield__label" for="userpass">Password</label>
-						
+						<div>Password: </div>
+						<input required name="userpass" type="password" class="form-control inputpass" id="userpass" onkeyup="checkInput(); return false;" />
+					
+					<center><br><div id=userField style="color:#ff0000"></div></center>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
 				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect type="submit">Log in</button>
@@ -72,18 +75,18 @@ checkLoginStatus();
 			            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect type="submit2">Register</button>
 			         </div>
 			     </form>
+			     
 			</div>
-			
 			<?php
                      
                      if(!isset($_SESSION["attempt"])){ 
-                       
-                       echo '<script>alert("Please enter Username and Password");</script>';
+                     
                      }
                        
                      elseif(!isset($_SESSION["myFirst"])){
                       
-                      echo '<script>alert("Incorrect Username or Password");</script>';
+                     echo "<script>" . '$("#userField").html("' . "Incorrect Username or Pass" . '"' . ");" . "</script>"; 
+                     
                      }
                     
                     else{
