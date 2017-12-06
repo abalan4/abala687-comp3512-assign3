@@ -37,116 +37,70 @@ session_start();
 				<h2 class="mdl-card__title-text">CRM Admin</h2>
 			</div>
 	  	<div class="mdl-card__supporting-text">
-				
-				
-				
-				<div class="container">
-	<div class="row">
-        <div class="col-md-6">
-            <form action="createUser.php" method="post" id="fileForm" role="form">
             
-            <div class="form-group"> 	 
+            <form action="createUser.php" method="post" id="fileForm" role="form">
+            <div> 	 
                 <label for="firstname"><span class="req"></span> First name: </label>
-                    <input class="form-control" type="text" name="firstname" id = "txt" onkeyup = "Validate(this)"> 
-                        <div id="errFirst"></div>    
+                    <input class="form-control" type="text" name="firstname" id="txt">
             </div>
             
-            <div class="form-group">
+            <div>
                 <label for="lastname"><span class="req">* </span> Last name: </label> 
-                    <input class="form-control" type="text" name="lastname" id = "txt" onkeyup = "Validate(this)"  required />  
-                        <div id="errLast"></div>
+                    <input class="form-control" type="text" name="lastname" id="txt" onkeyup = "Check(this)"  required />   
             </div>
             
             <div class="form-group">
                 <label for="address"><span class="req"></span> Address: </label> 
-                    <input class="form-control" type="text" name="address" id = "txt">  
-                        <div id="errLast"></div>
+                    <input class="form-control" type="text" name="address" id="txt">
             </div>
             
-            <div class="form-group">
+            <div>
                 <label for="city"><span class="req">* </span> City: </label> 
-                    <input class="form-control" type="text" name="city" id = "txt" onkeyup = "Validate(this)" required />  
-                        <div id="errLast"></div>
+                    <input class="form-control" type="text" name="city" id="txt" onkeyup = "Check(this)" required />
             </div>
             
-            <div class="form-group">
+            <div>
                 <label for="region"><span class="req"></span> Region: </label> 
-                    <input class="form-control" type="text" name="region" id = "txt">  
-                        <div id="errLast"></div>
+                    <input class="form-control" type="text" name="region" id="txt">
             </div>
             
-             <div class="form-group">
+             <div>
                 <label for="country"><span class="req">* </span> Country: </label> 
-                    <input class="form-control" type="text" name="country" id = "txt" onkeyup = "Validate(this)" required />  
-                        <div id="errLast"></div>
+                    <input class="form-control" type="text" name="country" id="txt" onkeyup = "Check(this)" required />
             </div>
             
-            <div class="form-group">
+            <div>
                 <label for="postal"><span class="req"></span> Postal: </label> 
-                    <input class="form-control" type="text" name="postal" id = "txt">  
-                        <div id="errLast"></div>
+                    <input class="form-control" type="text" name="postal" id="txt">
             </div>
-
-            <div class="form-group">
-            <label for="phonenumber"><span class="req">* </span> Phone Number: </label>
-                    <input required type="text" name="phonenumber" id="phone" class="form-control phone" maxlength="28" onkeyup="validatephone(this);"/> 
-            </div>
-
             
-            <div class="form-group">
+            <div>
+                <label for="phonenumber"><span class="req"></span> Phone Number: </label> 
+                    <input class="form-control" type="text" name="phonenumber" id="phone">
+            </div>
+            
+            <div>
                 <label for="email"><span class="req">* </span> Email Address: </label> 
-                    <input class="form-control" required type="text" name="email" id = "email"  onchange="email_validate(this.value);" />   
+                    <input class="form-control" required type="text" name="email" id="email"  onchange="email_validate(this.value);" />   
                         <div class="status" id="status"></div>
             </div>
 
-            <div class="form-group">
+            <div>
                 <label for="password"><span class="req">* </span> Password: </label>
-                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass1" /> </p>
+                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass" /> </p>
 
                 <label for="password"><span class="req">* </span> Password Confirm: </label>
-                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); return false;" />
+                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again"  id="confirmedPass" onkeyup="checkInput(); return false;" />
                         <span id="confirmMessage" class="confirmMessage"></span>
             </div>
-
-            <div class="form-group">
-            
-                <?php //$date_entered = date('m/d/Y H:i:s'); ?>
-                <input type="hidden" value="<?php //echo $date_entered; ?>" name="dateregistered">
-                <input type="hidden" value="0" name="activate" />
-                <hr>
-
-            </div>
-
-            <div class="form-group">
+            <div>
                 <input class="btn btn-success" type="submit" name="submit_reg" value="Register">
             </div>
-                      
- 
-
             </fieldset>
-            </form><!-- ends register form -->
+            </form>
 
-  <script type="text/javascript">
-    document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
-  </script>
-        </div><!-- ends col-6 -->
-   
-            
-
-	</div>
 </div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			</div>
-		
-		</div>
+</div>
 	</main>
 </div>
 </div>

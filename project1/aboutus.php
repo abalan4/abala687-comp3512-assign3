@@ -27,7 +27,7 @@ include 'checkloginstatus.php';
 </head>
 
 <body>
-    
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
             
@@ -38,6 +38,7 @@ include 'checkloginstatus.php';
         <section class="page-content">
 
             <div class="mdl-grid">
+              
 
 
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -65,7 +66,7 @@ include 'checkloginstatus.php';
     <ul>
       <li><a href="https://getmdl.io/">MDL</a></li>
       <li>Images from Assignment 1 zip</li>
-      <li><a href="https://github.com/abalan4/abala687-comp3512-assign2">Assignment 2 GitHub</a></li>
+      <li><a href="https://github.com/abalan4/abala687-comp3512-assign3">Assignment 3 GitHub</a></li>
     </ul>
   </div>
 

@@ -42,10 +42,37 @@ include 'checkloginstatus.php';
             <div class="mdl-grid">
 
               <!-- mdl-cell + mdl-card -->
-                            
-                <div class="mdl-card mdl-shadow--2dp demo-card-square">
+                    
+                <div class="mdl-card mdl-shadow--2dp demo4-card-square">
                 <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Top 15 Most Visited Countries</h2>
+                <h2 class="mdl-card__title-text"><u>Top 10 Adopted Books</u></h2>
+              </div>
+                <div class="mdl-card__supporting-text">
+
+                     <table id=infor2>
+                      <tr>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Quantity</th>
+                      </tr><tr id=itm0></tr>
+                      <tr id=itm1></tr>
+                      <tr id=itm2></tr>
+                      <tr id=itm3></tr>
+                      <tr id=itm4></tr>
+                      <tr id=itm5></tr>
+                      <tr id=itm6></tr>
+                      <tr id=itm7></tr>
+                      <tr id=itm8></tr>
+                      <tr id=itm9></tr>
+                    </table>
+                    
+                    <script src="js/createTopAdoptedTable.js"></script>
+              </div>
+            </div>    
+                            
+                <div class="mdl-card mdl-shadow--2dp demo4-card-square">
+                <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text"><u>Top 15 Most Visited Countries</u></h2>
               </div>
                 <div class="mdl-card__supporting-text">
 
@@ -59,93 +86,38 @@ include 'checkloginstatus.php';
                       </div>
                       <br><br>
                     </form>
-                    
-             <script> 
-                            
-                            $.getJSON("service-topCountries.php", function(json) {
-                                console.log(json); 
-                                for(var i=0; i<json.length; i++){
-                                $('#sample select').append("<option value=" + i + ">" + json[i].CountryCode + "</option>");
-                                    }
-                                    
-                            });
-                            
-                            function popInfo() {
-                                 $.getJSON("service-topCountries.php", function(json) {
-                                     var myList = document.getElementById("mySelect").value;
-                                     var cName = json[myList].CountryName;
-                                     var cCount = json[myList].Count;
-                                     document.getElementById("de").innerHTML = "Country: " + cName + "<br>" + "Number of Visits: " + cCount;
-                                 });
-                            }
-                            
-                            $.getJSON("service-totals.php", function(json2) {
-                                console.log(json2);
-                                $("#test").append(json2[0].Count);
-                                    
-                                    
-                            });
-              </script>
-                    
+                        
+                    <script src="js/createCountryTable.js"></script>
               </div>
 
             </div>
             
-            
-            
-            
-            
-            <div class="mdl-card mdl-shadow--2dp demo-card-square">
+            <div class="mdl-card mdl-shadow--2dp demo4-card-square">
                 <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Other info</h2>
+                <h2 class="mdl-card__title-text"><u>Totals</u></h2>
               </div>
                 <div class="mdl-card__supporting-text">
 
-                     <div id="info"></div>
+                     <table id=infor>
+                      <tr>
+                        <th>Icon</th>
+                        <th>Number</th>
+                        <th>Description</th>
+                      </tr>
+                      <tr id=item1>
+                      </tr>
+                      <tr id=item2>
+                      </tr>
+                      <tr id=item3>
+                      </tr>
+                      <tr id=item4>
+                      </tr>
+                    </table>
                       <br><br>
-             <script> 
-                            $.getJSON("service-totals.php", function(json2) {
-                                
-                                $("#info").append("Total number of visits in June: " + json2[0].Count + "<br><br>" + 
-                                "Unique countries viewed from: " + json2[1].Count + "<br><br>" + 
-                                "Total number of employee To-Do's: " + json2[2].Count + "<br><br>" + 
-                                "Total employee messages: " + json2[3].Count);
-                                      
-                            });
-                            
-                           
-              </script>
-                    
+                    <script src="js/createTotalsTable.js"></script>
               </div>
 
             </div>
-            
-            
-            
-            
-            <div class="mdl-card mdl-shadow--2dp demo-card-square">
-                <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Top 10 Adopted Books</h2>
-              </div>
-                <div class="mdl-card__supporting-text">
-
-                     <div id="info2"></div>
-                      <br><br>
-             <script> 
-                            $.getJSON("service-topAdoptedBooks.php", function(json3) {
-                                console.log(json3);
-                                $("#info2").append("Total adoptions: " + json3[0].Count);
-                                      
-                            });
-                            
-                           
-              </script>
-              </div>
-            </div>
-            
-            
-            
-            
         </section>
     </main>    
 </div>    <!-- / mdl-layout --> 
