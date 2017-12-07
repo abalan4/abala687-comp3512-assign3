@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+$_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']) . "?ISBN10=" . $_GET['ISBN10']);
+echo $_SESSION["prevPage"];
+
 include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
@@ -50,6 +53,7 @@ function checkISBN(){
 </head>
 
 <body>
+
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">

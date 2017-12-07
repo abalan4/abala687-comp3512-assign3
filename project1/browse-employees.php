@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']) . "?lnameFilter=" . $_GET['lname'] . "&cityFilter=" . $_GET['cityFilter']);
 include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 

@@ -9,13 +9,17 @@ define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
 session_start();
 
 function checkLoginStatus(){
-    if(isset($_SESSION["myusername"]) && isset($_SESSION["myFirst"]) && isset($_SESSION["myLast"]) && isset($_SESSION["myEmail"])){
-        
-        header("Location:/project1/index.php");}
+    if(isset($_SESSION["myusername"]) && isset($_SESSION["myFirst"]) && isset($_SESSION["myLast"]) && isset($_SESSION["myEmail"])) {
+        if($_SESSION["prevPage"]){
+        	header("Location:/project1/" . $_SESSION["prevPage"]);
+        }
+        else{
+        	header("Location:/project1/index.php");
+        }
+    }
     else{
         //do nothing
     }
-    
 }
 
 checkLoginStatus();
@@ -41,7 +45,14 @@ checkLoginStatus();
        
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <script src="js/validateLogin.js"></script>
-    
+ 
+ 
+<script>
+	function disappearError(){
+    $("#userField").hide();
+};
+</script> 
+   
 </head>
 
 <body>
@@ -58,13 +69,13 @@ checkLoginStatus();
 				<form action="checklogin.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<div>Username: </div>
-						<input required name="username" type="username" class="form-control inputpass" id="username" onkeyup="checkInput(); return false;" />
+						<input required name="username" type="username" class="form-control inputpass" id="username" onclick="disappearError();" onkeyup="checkInput(); return false;" />
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
 						<div>Password: </div>
-						<input required name="userpass" type="password" class="form-control inputpass" id="userpass" onkeyup="checkInput(); return false;" />
+						<input required name="userpass" type="password" class="form-control inputpass" id="userpass" onclick="disappearError();" onkeyup="checkInput(); return false;" />
 					
-					<center><br><div id=userField style="color:#ff0000"></div></center>
+					<center><br><div id="userField" style="color:#ff0000"></div></center>
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
 				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect type="submit">Log in</button>

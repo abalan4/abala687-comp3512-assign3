@@ -30,6 +30,14 @@ include 'includes/book-config.inc.php';
 
 <body>
 
+
+
+<img src="/project1/book-images/medium/013261930X.jpg" alt="image" onclick="/project1/book-images/large/013261930X.jpg'; 
+this.onmouseover = false; this.onmouseout = false;" onmouseout="this.src='/project1/book-images/medium/013261930X.jpg';">
+
+
+
+
 <script>
 /*$(function ()
 {

@@ -2,6 +2,7 @@
 
 session_start();
 
+$_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']) . "?university=" . $_GET['university'] . "&state=" . $_GET['state']);
 include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 

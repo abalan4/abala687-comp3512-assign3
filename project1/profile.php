@@ -2,6 +2,7 @@
 
 session_start();
 
+$_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']));
 include 'checkloginstatus.php';
 
 ?>

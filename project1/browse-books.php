@@ -2,6 +2,7 @@
 
 session_start();
 
+$_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']) . "?subcategory=" . $_GET['subcategory'] . "&imprint=" . $_GET['imprint']);
 include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
