@@ -2,6 +2,10 @@
 
 session_start();
 
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +28,12 @@ session_start();
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     
     <script src="js/validateForm.js"></script>
+    
+    <script>
+	function disappearErr(){
+    $("#errDiv").hide();
+    };
+    </script> 
     
 </head>
 
@@ -81,10 +91,15 @@ session_start();
             
             <div>
                 <label for="email"><span class="req">* </span> Email Address: </label> 
-                    <input class="form-control" required type="text" name="email" id="email"  onchange="email_validate(this.value);" />   
+                    <input class="form-control" required type="text" name="email" id="email" onclick="disappearErr();" onchange="email_validate(this.value);" />   
                         <div class="status" id="status"></div>
-            </div>
-
+            </div><center><div id="errDiv" style="color:#ff0000"></div></center>
+            <?php 
+			    if(isset($_GET['exists'])) {
+                    echo "<script>" . '$("#errDiv").html("' . "Username exists!" . '"' . ");" . "</script>";
+                    $_SESSION['exists'] = 1;
+                }
+			    ?>
             <div>
                 <label for="password"><span class="req">* </span> Password: </label>
                     <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass" /> </p>
@@ -106,3 +121,4 @@ session_start();
 </div>
 </body>
 </html>
+

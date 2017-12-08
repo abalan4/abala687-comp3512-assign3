@@ -1,5 +1,5 @@
-function Check(txt) {
-    txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
+function Check(input) {
+    input.value = input.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
 }
 
 function email_validate(email)

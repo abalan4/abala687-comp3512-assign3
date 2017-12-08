@@ -90,13 +90,18 @@ checkLoginStatus();
 			</div>
 			<?php
                      
-                     if(!isset($_SESSION["attempt"])){ 
-                     
+                     if(isset($_SESSION["attempt"])){ 
+                     echo "<script>" . '$("#userField").html("' . "Incorrect Username or Pass" . '"' . ");" . "</script>";
+                     $_SESSION["attempt"] = 0;
                      }
-                       
+                     
+                     elseif(!isset($_SESSION["attempt"])){
+                         //do nothing
+                     }
+                     
                      elseif(!isset($_SESSION["myFirst"])){
                       
-                     echo "<script>" . '$("#userField").html("' . "Incorrect Username or Pass" . '"' . ");" . "</script>"; 
+                     echo "<script>" . '$("#userField").html("' . "2Incorrect Username or Pass" . '"' . ");" . "</script>"; 
                      
                      }
                     
