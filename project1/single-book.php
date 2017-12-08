@@ -42,17 +42,13 @@ function checkISBN(){
     
     
     <script   src="https://code.jquery.com/jquery-1.7.2.min.js" ></script>
-       
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    
-    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-    
+    <script src="js/dimImage.js"></script>
+ 
 </head>
 
 <body>
-
+    
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
@@ -75,27 +71,21 @@ function checkISBN(){
                         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                           
                           <div class="mdl-tabs__panel is-active" id="address-panel">
-                              
+                            
                            <?php include 'includes/displaySingle.php'; ?>
                            
                           </div>
-                          <div class="mdl-tabs__panel" id="todo-panel">
-                              
-                          </div>
                           
-                          <div class="mdl-tabs__panel" id="messages-panel">
-                              
-                          </div>
                         </div>                         
                     </div>    
   
               </div>  <!-- / mdl-cell + mdl-card -->   
-            
+         
             </div>  <!-- / mdl-grid -->    
 
         </section>
     </main>    
 </div>    <!-- / mdl-layout --> 
-          
+     
 </body>
 </html>

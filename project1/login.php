@@ -101,7 +101,7 @@ checkLoginStatus();
                      
                      elseif(!isset($_SESSION["myFirst"])){
                       
-                     echo "<script>" . '$("#userField").html("' . "2Incorrect Username or Pass" . '"' . ");" . "</script>"; 
+                     echo "<script>" . '$("#userField").html("' . "Incorrect Username or Pass" . '"' . ");" . "</script>"; 
                      
                      }
                     

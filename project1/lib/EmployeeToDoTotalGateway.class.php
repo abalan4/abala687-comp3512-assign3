@@ -7,6 +7,7 @@ protected function getSelectStatement()
 {
 return "SELECT COUNT(*) as Count
         FROM EmployeeToDo
+        WHERE DateBy like '2017-06-%'
         ORDER BY Count DESC";
 }
 protected function getOrderFields() {

@@ -118,5 +118,12 @@ public function findCountries()
    return $statement->fetchAll();
 }
 
+public function findCountry($id)
+{
+   $sql = $this->getSelectStatement() . $this->getOrderFields() . '=:id' . $this->getPrimaryKeyName();
+   $statement = DatabaseHelper::runQuery($this->connection, $sql, Array(':id' => $id));
+   return $statement->fetchAll();
+}
+
 }
 ?>

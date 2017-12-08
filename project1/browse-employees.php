@@ -7,18 +7,11 @@ include 'includes/book-config.inc.php';
 
 function checkQuery(){
   
-    if(!isset($_GET['employee'])){
-      $_GET['employee'] = 1;
-      $num = 1;
-    }
-    elseif(is_numeric($_GET['employee']) && isset($_GET['employee']) && ($_GET['employee']<'99')) {
-        $num = $_GET['employee'];   
-    }
-    else{
-        $num = 1;
-    }
-    
+    if(isset($_GET['employee'])){
+    $num =  $_GET['employee'];
+       
     return $num;
+    }
 }
 
 ?>    

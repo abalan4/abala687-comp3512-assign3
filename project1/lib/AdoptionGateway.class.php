@@ -5,11 +5,12 @@ parent::__construct($connect);
 }
 protected function getSelectStatement()
 {
-return "SELECT Books.Title, Books.ISBN10, AdoptionBooks.BookID, COUNT(*) as Count
+return "SELECT sum(Quantity) as mySum, Books.Title, Books.ISBN10, AdoptionBooks.BookID
         FROM Adoptions, AdoptionBooks, Books
-        WHERE AdoptionBooks.AdoptionID=Adoptions.AdoptionID and AdoptionBooks.BookID=Books.BookID
+        WHERE AdoptionBooks.AdoptionID = Adoptions.AdoptionID
+        AND AdoptionBooks.BookID = Books.BookID
         GROUP BY AdoptionBooks.BookID
-        ORDER BY Count DESC
+        ORDER BY mySum DESC 
         LIMIT 10";
 }
 protected function getOrderFields() {

@@ -205,6 +205,27 @@ span.req {
     font-size: 112%;
 }
 
+#bright {
+  min-width:100%;
+  min-height:100%;
+  display:none;
+  background: rgba(0,0,0,0.5);
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index:10;
+}
+
+#picture {
+  display:none;
+  position:fixed;
+  left:47%;
+  width:550px;
+  top:122px;
+  margin-left:-195px;
+  z-index:11;
+}
+
 #infor {
     font-family: arial, sans-serif;
     border-collapse: collapse;

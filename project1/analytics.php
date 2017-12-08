@@ -44,7 +44,7 @@ include 'checkloginstatus.php';
 
               <!-- mdl-cell + mdl-card -->
                     
-                <div class="mdl-card mdl-shadow--2dp demo4-card-square">
+                <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text"><u>Top 10 Adopted Books</u></h2>
               </div>
@@ -71,7 +71,7 @@ include 'checkloginstatus.php';
               </div>
             </div>    
                             
-                <div class="mdl-card mdl-shadow--2dp demo4-card-square">
+                <div class="mdl-cell mdl-cell--2-col card-lesson mdl-card  mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text"><u>Top 15 Most Visited Countries</u></h2>
               </div>
@@ -93,7 +93,7 @@ include 'checkloginstatus.php';
 
             </div>
             
-            <div class="mdl-card mdl-shadow--2dp demo4-card-square">
+            <div class="mdl-cell mdl-cell--4-col card-lesson mdl-card  mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text"><u>Totals</u></h2>
               </div>

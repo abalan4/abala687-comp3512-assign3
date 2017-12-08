@@ -13,9 +13,13 @@
                                       echo ' <h2 class="' . "mdl-card__title-text" . '"' . ">" .   $row['Title']  . "</h2>";
                                       echo "</div>\n";
                                       echo "<div class=\"mdl-card__supporting-text\">\n";
-                                      
-                                      //Using FancyBox API for image enlargement/dimming
-                                      echo "<a data-fancybox='gallery'" . " href='" . "/project1/book-images/large/" . $row['ISBN10'] . ".jpg'" . "><img src=" . "'" . '/project1/book-images/medium/' . $row['ISBN10'] . ".jpg'" . "></a><br>";
+                                     
+                                      echo '<div id="max" href="#"><img src="/project1/book-images/medium/' . $row['ISBN10'] . '.jpg"></div>';
+                                      echo "<div id=\"picture\">\n";
+                                      echo "<img src='/project1/book-images/large/" . $row['ISBN10'] . ".jpg'>";
+                                      echo '<h5><p align="center"><div id="min"><a href="#">Close</a></div></p></h5>';
+                                      echo "</div>";
+                                      echo '<div id="bright"></div>';
                                       
                                       echo "ISBN10: " . $row['ISBN10'] . "<br>";
                                       echo "ISBN13: " . $row['ISBN13'] . "<br>";
@@ -30,6 +34,7 @@
                                       echo "Description: " . $row['Description'] . "<br>";
                                       echo "</div>\n";
                                       echo "</div>";
+                                      
                                 }
                              
                                 $db = new UniversityBookGateway($connection );

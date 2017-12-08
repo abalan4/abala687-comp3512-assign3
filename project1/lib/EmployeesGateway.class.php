@@ -5,7 +5,7 @@ parent::__construct($connect);
 }
 protected function getSelectStatement()
 {
-return "SELECT EmployeeID, FirstName, LastName, Address, City, Region, Country, Postal, Email FROM Employees ";
+return "SELECT * FROM Employees";
 }
 protected function getOrderFields() {
 return 'LastName, FirstName';
@@ -40,7 +40,7 @@ public function displayEmployees()
             }
         }
         if ($lnameFilter) {
-             $sql.= 'LastName = "'. $lnameFilter . '"';
+             $sql.= "LastName LIKE '". $lnameFilter. "%'";
          }
     }
 
