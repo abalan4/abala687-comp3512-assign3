@@ -1,3 +1,4 @@
+                        //This script gets the JSON totals from the service-totals.php page and appends to the table including the icon, description and number.
                         $.getJSON("service-totals.php", function(json2) {
                                 
                                 $("#item1").append("<td><img src=" + "'" + "/project1/images/ic_visibility_black_24dp_1x.png" + "'" + "></td>"  + "<td>" + json2[0].Count + "</td>" + "<td>Total number of visits in June</td>");

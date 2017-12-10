@@ -7,6 +7,7 @@ define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
 
 session_start();
 
+//This function gets the username and password from POST and creates the salted password which it returns to the getUserLogin function to store in the database.
 function getUserSalt(){
     
     $getUser = $_POST["username"];
@@ -41,6 +42,7 @@ function getUserSalt(){
 				}
 }
 
+//After registering is successful, this function accesses database and stores session cookies to the database. If unsuccessful attempt is true creates session cookie for unsuccessful login.
 function getUserLogin(){
     $getUser = $_POST["username"];
     $getPass = getUserSalt();

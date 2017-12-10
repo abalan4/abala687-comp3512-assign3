@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+//Creates session cookie to remember last visited page so that after login it redirects to previous page
 $_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']));
 include 'checkloginstatus.php';
 
@@ -53,7 +54,25 @@ include 'checkloginstatus.php';
     <ul>
       <th>Assignment 2 created for COMP 3512 WEB II</th>
       <li>Alex Balan: Student ID: 201521687</li>
+      <ul>Contributions: 
+        <li>Login/Register/Logout</li>
+        <li>Enlarge/dim image</li>
+        <li>Google maps</li>
+        <li>Browse-universities</li>
+        <li>Browse-books/single-books</li>
+        <li>JSON pages/Analytics page</li>
+        <li>Github page</li>
+      </ul>
       <li>Kevin Lewis: Student ID: 201526932 </li>
+      <ul>Contributions: 
+        <li>Browse Employees</li>
+        <li>Simple Search</li>
+        <li>Wildcard Search</li>
+        <li>CSS styling</li>
+        <li>Google MDL Cards</li>
+        <li>Navigation</li>
+        <li>Page Layout/Styling</li>
+      </ul>
     </ul>
   </div>
   <div class="mdl-tabs__panel" id="course-panel">

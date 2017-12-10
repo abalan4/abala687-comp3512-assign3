@@ -1,10 +1,13 @@
 <?php
 session_start();
 
+//Creates session cookie to remember last visited page so that after login it redirects to previous page
 $_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']) . "?lnameFilter=" . $_GET['lname'] . "&cityFilter=" . $_GET['cityFilter']);
 include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
+
+//Check if employee exists as Querystring
 function checkQuery(){
   
     if(isset($_GET['employee'])){
@@ -84,7 +87,6 @@ function checkQuery(){
                 </div>
               </div>  <!-- / mdl-cell + mdl-card -->
               
-  
               <!-- mdl-cell + mdl-card -->
               <div class="mdl-cell mdl-cell--7-col card-lesson mdl-card  mdl-shadow--2dp">
 
@@ -187,7 +189,7 @@ function checkQuery(){
                         </div>                         
                     </div>
                     
-              
+          
               </div>  <!-- / mdl-cell + mdl-card -->   
               
               <div class="mdl-cell mdl-cell--2-col card-lesson mdl-card  mdl-shadow--2dp">
@@ -196,6 +198,7 @@ function checkQuery(){
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                     
+                    <!--Display Filters -->
                     <div id="content">
                     <br><form action="/project1/browse-employees.php" type="get">
                       Last Name: <input type="text" name="lnameFilter"><br>
@@ -217,7 +220,6 @@ function checkQuery(){
                         </select>
                     <input type="submit" value="Submit"></div>
                     </form>
-                    
                         <script>
                             function hide() {
                                 var x = document.getElementById("content");

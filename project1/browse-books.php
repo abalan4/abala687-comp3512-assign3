@@ -2,10 +2,12 @@
 
 session_start();
 
+//Creates session cookie to remember last visited page so that after login it redirects to previous page
 $_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']) . "?subcategory=" . $_GET['subcategory'] . "&imprint=" . $_GET['imprint']);
 include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
+//This function checks the querystring and if invalid input or an incorrect id is used, it redirects back to a known page.
 function checkQuery(){
   
     if (!empty($_GET['subcategory']) && $_GET['subcategory'] == "reset"){

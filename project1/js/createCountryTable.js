@@ -1,3 +1,4 @@
+                            //This script gets the JSON object and appends each of the objects in the JSON array to create the select list of top 15 countries.
                             $.getJSON("service-topCountries.php", function(json) {
                                 console.log(json); 
                                 for(var i=0; i<json.length; i++){
@@ -6,6 +7,7 @@
                                     
                             });
                             
+                            //This script populates the data and shows the country name and count dynamically as the user clicks on codes from the select list.
                             function popInfo() {
                                  $.getJSON("service-topCountries.php", function(json) {
                                      var myList = document.getElementById("mySelect").value;
@@ -15,8 +17,3 @@
                                  });
                             }
                             
-                            $.getJSON("service-totals.php", function(json2) {
-                                console.log(json2);
-                                $("#test").append(json2[0].Count);
-                            });
-              

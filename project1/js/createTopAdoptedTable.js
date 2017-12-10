@@ -1,3 +1,4 @@
+                            //This script retrieves the JSON from service-topAdoptedBooks.php and appends each book to the table
                             $.getJSON("service-topAdoptedBooks.php", function(json3) {
                                 console.log(json3);
                                 

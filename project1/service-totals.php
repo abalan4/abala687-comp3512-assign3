@@ -16,6 +16,7 @@ header('Content-Type: application/json');
     $db4 = new EmployeeMsgTotalGateway($connection );
     $results4 = $db4->findCountries();  
     
+    //Merges 4 arrays to create 1 array which is used as a JSON object to display data dynamically.
     $combArray = array_merge($results, $results2, $results3, $results4);
     
     echo json_encode($combArray);

@@ -9,7 +9,7 @@ define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
 session_start();
 
 
-
+//This function checks if there is an existing username in the database. If a match is found, a querystring is returned to the register page and it displays an error.
 function checkExisting(){
 try {
                                 $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);

@@ -2,10 +2,6 @@
 
 session_start();
 
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +25,6 @@ session_start();
     
     <script src="js/validateForm.js"></script>
     
-    <script>
-	function disappearErr(){
-    $("#errDiv").hide();
-    };
-    </script> 
-    
 </head>
 
 <body>
@@ -50,62 +40,64 @@ session_start();
             
             <form action="createUser.php" method="post" id="fileForm" role="form">
             <div> 	 
-                <label for="firstname"><span class="req"></span> First name: </label>
+                <label for="firstname"> First name: </label>
                     <input class="form-control" type="text" name="firstname" id="txt">
             </div>
             
             <div>
-                <label for="lastname"><span class="req">* </span> Last name: </label> 
+                <label for="lastname">*Last name: </label> 
                     <input class="form-control" type="text" name="lastname" id="txt" onkeyup = "Check(this)"  required />   
             </div>
             
             <div class="form-group">
-                <label for="address"><span class="req"></span> Address: </label> 
+                <label for="address"> Address: </label> 
                     <input class="form-control" type="text" name="address" id="txt">
             </div>
             
             <div>
-                <label for="city"><span class="req">* </span> City: </label> 
+                <label for="city">*City: </label> 
                     <input class="form-control" type="text" name="city" id="txt" onkeyup = "Check(this)" required />
             </div>
             
             <div>
-                <label for="region"><span class="req"></span> Region: </label> 
+                <label for="region"> Region: </label> 
                     <input class="form-control" type="text" name="region" id="txt">
             </div>
             
              <div>
-                <label for="country"><span class="req">* </span> Country: </label> 
+                <label for="country">*Country: </label> 
                     <input class="form-control" type="text" name="country" id="txt" onkeyup = "Check(this)" required />
             </div>
             
             <div>
-                <label for="postal"><span class="req"></span> Postal: </label> 
+                <label for="postal"> Postal: </label> 
                     <input class="form-control" type="text" name="postal" id="txt">
             </div>
             
             <div>
-                <label for="phonenumber"><span class="req"></span> Phone Number: </label> 
+                <label for="phonenumber"> Phone Number: </label> 
                     <input class="form-control" type="text" name="phonenumber" id="phone">
             </div>
             
             <div>
-                <label for="email"><span class="req">* </span> Email Address: </label> 
+                <label for="email">*Email Address: </label> 
                     <input class="form-control" required type="text" name="email" id="email" onclick="disappearErr();" onchange="email_validate(this.value);" />   
                         <div class="status" id="status"></div>
             </div><center><div id="errDiv" style="color:#ff0000"></div></center>
             <?php 
+            
+            //error to let user know username exists, disappears onclick.
 			    if(isset($_GET['exists'])) {
                     echo "<script>" . '$("#errDiv").html("' . "Username exists!" . '"' . ");" . "</script>";
                     $_SESSION['exists'] = 1;
                 }
 			    ?>
             <div>
-                <label for="password"><span class="req">* </span> Password: </label>
-                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass" /> </p>
+                <label for="password">*Password: </label>
+                    <input required name="password" type="password" class="form-control inputpass" minlength="6" maxlength="20"  id="pass" /> </p>
 
-                <label for="password"><span class="req">* </span> Password Confirm: </label>
-                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again"  id="confirmedPass" onkeyup="checkInput(); return false;" />
+                <label for="password">*Password Confirm: </label>
+                    <input required name="password" type="password" class="form-control inputpass" minlength="6" maxlength="20" placeholder="Enter again"  id="confirmedPass" onkeyup="checkInput(); return false;" />
                         <span id="confirmMessage" class="confirmMessage"></span>
             </div>
             <div>

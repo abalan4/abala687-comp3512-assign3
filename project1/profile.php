@@ -1,4 +1,5 @@
 <?php
+//Placeholder page for profile - not implemented for groups of 2.
 
 session_start();
 

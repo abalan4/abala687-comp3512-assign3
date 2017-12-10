@@ -1,5 +1,6 @@
 <?php
 
+//This page checks if session cookies have been created for a logged in user. If not redirects back to login page.
 session_start();
 
 if(isset($_SESSION["myusername"]) && isset($_SESSION["myFirst"]) && isset($_SESSION["myLast"]) && isset($_SESSION["myEmail"])){

@@ -8,6 +8,7 @@ define('DBCONNSTRING','mysql:dbname=book;charset=utf8mb4;');
 
 session_start();
 
+//Used to redirect user to last visited page
 function checkLoginStatus(){
     if(isset($_SESSION["myusername"]) && isset($_SESSION["myFirst"]) && isset($_SESSION["myLast"]) && isset($_SESSION["myEmail"])) {
         if($_SESSION["prevPage"]){
@@ -90,6 +91,7 @@ checkLoginStatus();
 			</div>
 			<?php
                      
+                     //Script to display error message if user has an unsuccessful login. Disappears when user begins to type new input.
                      if(isset($_SESSION["attempt"])){ 
                      echo "<script>" . '$("#userField").html("' . "Incorrect Username or Pass" . '"' . ");" . "</script>";
                      $_SESSION["attempt"] = 0;

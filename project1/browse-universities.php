@@ -2,11 +2,12 @@
 
 session_start();
 
+//Creates session cookie to remember last visited page so that after login it redirects to previous page
 $_SESSION["prevPage"] = (basename($_SERVER['PHP_SELF']) . "?university=" . $_GET['university'] . "&state=" . $_GET['state']);
 include 'checkloginstatus.php';
 include 'includes/book-config.inc.php';
 
-/*This function checks the querystring to make sure a state was entered correctly*/
+/*This function checks the querystring to make sure a state was entered correctly. Compares to the array full of codes. If not found redirects to known page*/
 function checkStates(){
 
 if (!isset($_GET['state'])){

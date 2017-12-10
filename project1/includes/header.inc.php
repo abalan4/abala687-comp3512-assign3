@@ -6,7 +6,7 @@
  
         <script type="text/javascript">
 
-//Displays the Search icon in the top right, can click to show and hide.
+//Displays the Search icon in the top right, can click to show.
         
     
         var searchBox = 

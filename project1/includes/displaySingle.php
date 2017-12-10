@@ -1,4 +1,9 @@
-<?php   
+<?php  
+    
+    /*The displaySingle.php page is used to isolate markup from the single-books.php page. 
+    There is a database call to the SingleBooksGateway to display the book, a call to the UniversityBookGateway to return the adopted universities, 
+    and a call to the BookAuthorGateway to return the authors of the book.
+    */
                              /* display requested uni's information */
                              
                              $c = checkISBN();
@@ -16,8 +21,8 @@
                                      
                                       echo '<div id="max" href="#"><img src="/project1/book-images/medium/' . $row['ISBN10'] . '.jpg"></div>';
                                       echo "<div id=\"picture\">\n";
-                                      echo "<img src='/project1/book-images/large/" . $row['ISBN10'] . ".jpg'>";
                                       echo '<h5><p align="center"><div id="min"><a href="#">Close</a></div></p></h5>';
+                                      echo "<img src='/project1/book-images/large/" . $row['ISBN10'] . ".jpg'>";
                                       echo "</div>";
                                       echo '<div id="bright"></div>';
                                       
